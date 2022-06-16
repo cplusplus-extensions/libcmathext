@@ -4,4 +4,4 @@ This library is meant to be an extension for the C++ header file <math.h>. It co
 
 ## Website
 
-You can find this library's website's homepage at:  https://marck283.github.io/libcmathext/
+You can find this library's website's homepage at:  <https://marck283.github.io/libcmathext/>
