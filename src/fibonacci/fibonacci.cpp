@@ -8,11 +8,15 @@
  * @brief Questa funzione calcola la somma di tutti i numeri pari di Fibonacci che non superino il valore dato in input.
  * @warning Questa funzione lancia un'eccezione nel caso in cui si verifichi un overflow aritmetico.
  * @exception std::overflow_error Eccezione lanciata quando si verifica un overflow aritmetico.
+ * @exception std::invalid_argument Eccezione lanciata quando il valore fornito in input è negativo o nullo.
  * 
  * @param target 
  * @return int 
  */
 int Fibonacci::sumEvenFib(int target) {
+    if(target <= 0) {
+        throw new std::invalid_argument("Target value less than or equal to zero is not allowed.");
+    }
     unsigned int sum = 0, temp, nuovo = 1, old = 1;
     
     try {
