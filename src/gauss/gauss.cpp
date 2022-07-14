@@ -7,7 +7,7 @@
  * questi valori positivi, in quanto non richiede che vengano eseguite più di tre operazioni.
  * @warning questa funzione può lanciare un'eccezione in caso di overflow aritmetico o qualora sia fornito in input un valore negativo.
  * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
- * @exception std::invalid_argument Eccezione lanciata quando il valore fornito in input è negativo.
+ * @exception std::invalid_argument Eccezione lanciata quando il valore fornito in input è negativo o nullo.
  * 
  * @param value 
  * @return long long int 
