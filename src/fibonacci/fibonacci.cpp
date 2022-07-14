@@ -14,23 +14,24 @@
  * @return int 
  */
 int Fibonacci::sumEvenFib(int target) {
+    unsigned int sum = 0;
     if(target <= 0) {
         throw new std::invalid_argument("Target value less than or equal to zero is not allowed.");
-    }
-    unsigned int sum = 0, temp, nuovo = 1, old = 1;
+    } else {
+        unsigned int temp, nuovo = 1, old = 1;
     
-    try {
-        temp = nuovo + old;
-        while(nuovo <= target) {
-            sum += temp;
-            nuovo = old + temp;
-            old = temp + nuovo;
+        try {
             temp = nuovo + old;
+            while(nuovo <= target) {
+                sum += temp;
+                nuovo = old + temp;
+                old = temp + nuovo;
+                temp = nuovo + old;
+            }
+        } catch(std::overflow_error& e) {
+            throw new std::overflow_error("Arithmetic overflow occurred.");
         }
-    } catch(std::overflow_error& e) {
-        throw new std::overflow_error("Arithmetic overflow occurred.");
-    }
-    
+    } 
 
     return sum;
 }
