@@ -4,6 +4,10 @@
 #include <cmath>
 #include <stdexcept>
 
+Fibonacci::~Fibonacci() {
+    //Distruttore vuoto
+}
+
 /**
  * @brief Questa funzione calcola la somma di tutti i numeri pari di Fibonacci che non superino il valore dato in input.
  * @warning Questa funzione lancia un'eccezione nel caso in cui si verifichi un overflow aritmetico.

@@ -13,9 +13,7 @@ class Fibonacci {
     }
     int sumEvenFib(int target);
     int binet(int index);
-    ~Fibonacci(){
-        //Distruttore vuoto
-    }
+    ~Fibonacci();
 };
 
 #endif
