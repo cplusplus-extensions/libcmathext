@@ -13,6 +13,9 @@ class Fibonacci {
     }
     int sumEvenFib(int target);
     int binet(int index);
+    ~Fibonacci(){
+        std::cout<<"dio cane i distruttori lasagna\n";
+    }
 };
 
 #endif
