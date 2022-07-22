@@ -122,7 +122,7 @@ unsigned long long int digitSum(std::string str) {
  * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
  * @param reason La ragione della progressione geometrica
  * @param exp L'esponente della progressione geometrica
- * @return long double 
+ * @return long double Il risultato del calcolo della progressione geometrica
  */
 long double geomProgression(unsigned long long int reason, unsigned long long int exp) {
     long double result = 0.0;
