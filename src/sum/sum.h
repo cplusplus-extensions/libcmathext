@@ -14,6 +14,7 @@ class Sum {
         int sumMultiples(int valueA, int valueB, int target);
         int sumDivisibleBy(int N, int target);
         unsigned long long int digitSum(std::string str);
+        long double geomProgression(unsigned long long int reason, unsigned long long int exp);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "sum.h"
 #include <algorithm>
 #include <stdexcept>
+#include <cmath>
 
 Sum::Sum(int val, int val1 = 0, int val2 = 0) {
     valueA = val;
@@ -113,4 +114,22 @@ unsigned long long int digitSum(std::string str) {
     }
 
     return sum;
+}
+
+/**
+ * @brief Questa funzione calcola il risultato della progressione geometrica di ragione "reason" ed esponente "exp".
+ * 
+ * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
+ * @param reason La ragione della progressione geometrica
+ * @param exp L'esponente della progressione geometrica
+ * @return long double 
+ */
+long double geomProgression(unsigned long long int reason, unsigned long long int exp) {
+    long double result = 0.0;
+    try {
+        result = (1.0 - std::pow(reason, exp))/(1.0 - reason);
+    } catch(std::overflow_error& e) {
+        throw new std::overflow_error("Arithmetic overflow occurred.");
+    }
+    return result;
 }
