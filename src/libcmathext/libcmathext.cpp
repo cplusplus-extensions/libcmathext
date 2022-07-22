@@ -51,3 +51,23 @@ unsigned long long int countChain(unsigned long long int value) {
     
     return value;
 }
+
+/**
+ * @brief Questa funzione permette di calcolare il fattoriale di un numero intero positivo o nullo.
+ * 
+ * @exception std::invalid_argument Eccezione lanciata quando il almeno uno dei valori forniti in input è negativo.
+ * @param value Il valore di cui calcolare il fattoriale.
+ * @param res Un parametro di ritorno che contiene il risultato del calcolo del fattoriale.
+ * @return unsigned long long int Il risultato del calcolo del fattoriale
+ */
+unsigned long long int factorial(unsigned long long int value, unsigned long long int res = 1) {
+    if(value < 0 || res <= 0) {
+        throw std::invalid_argument("At least one input value is negative.");
+    } else {
+        if(value == 0 || value == 1) {
+            return res;
+        } else {
+            return factorial(value - 1, res*value);
+        }
+    }
+}
