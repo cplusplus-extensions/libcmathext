@@ -1,5 +1,4 @@
 #include "graph.h"
-#include <algorithm>
 
 #if __cplusplus >= 201703L
 #include <algorithm>
