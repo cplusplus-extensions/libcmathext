@@ -1,10 +1,13 @@
 #include "graph.h"
 #include <algorithm>
 
+#if __cplusplus >= 201703L
+#include <algorithm>
+
 /**
  * @brief This function finds how many vertices have an odd degree in the given graph.
  * 
- * @return int 
+ * @return int The number of vertices that have an odd degree in the given graph.
  */
 int Graph::oddVertNum() {
     int oddCounter = 0;
@@ -17,6 +20,25 @@ int Graph::oddVertNum() {
 
     return oddCounter;
 }
+
+#else //__cplusplus < 201703L
+/**
+ * @brief This function finds how many vertices have an odd degree in the given graph.
+ * 
+ * @return int The number of vertices that have an odd degree in the given graph.
+ */
+int Graph::oddVertNum() {
+    int oddCounter = 0;
+
+    for(Node& n: *vect) {
+        if(!n.evenVertex()) {
+            ++oddCounter;
+        }
+    }
+
+    return oddCounter;
+}
+#endif
 
 /**
  * @brief This function finds if the given graph is a Eulerian graph. To do so, it uses the fact that a Eulerian graph
