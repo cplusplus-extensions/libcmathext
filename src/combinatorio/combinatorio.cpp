@@ -1,7 +1,8 @@
 #include "combinatorio.h"
-#include <algorithm>
 #include <cmath>
+#include <algorithm>
 
+#if __cplusplus >= 201703L
 /**
  * @brief Questa funzione permette di calcolare il numero di permutazioni con ripetizione di una sequenza di elementi (anche ripetuti). Questa funzione ritorna -1 in caso di overflow aritmetico.
  * 
@@ -22,6 +23,29 @@ unsigned long long int permWithRepetition(unsigned long long int n, const std::v
     }
     return factorial(n)/res;
 }
+
+#else
+/**
+ * @brief Questa funzione permette di calcolare il numero di permutazioni con ripetizione di una sequenza di elementi (anche ripetuti). Questa funzione ritorna -1 in caso di overflow aritmetico.
+ * 
+ * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
+ * @param n La lunghezza della sequenza di elementi di cui calcolare il numero di permutazioni.
+ * @param v Un vettore contenente le specifiche delle ripetizioni degli elementi.
+ * @return unsigned long long int Il numero di permutazioni con ripetizione della sequenza di elementi.
+ */
+unsigned long long int permWithRepetition(unsigned long long int n, const std::vector<unsigned long long int>& v) {
+    unsigned long long int res = 1;
+    try {
+        for(unsigned long long int i: v) {
+            res *= factorial(i);
+        }
+    } catch(std::overflow_error& e) {
+        throw std::overflow_error("The result of the calculation is too big.");
+        return -1;
+    }
+    return factorial(n)/res;
+}
+#endif
 
 /**
  * @brief Questa funzione permette di calcolare il coefficiente binomiale di due valori forniti in input. Questa funzione ritorna -1 in caso di overflow aritmetico o nel caso in cui il primo valore in input sia inferiore al secondo.

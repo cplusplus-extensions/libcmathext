@@ -1,8 +1,7 @@
 #include "graph.h"
-
-#if __cplusplus >= 201703L
 #include <algorithm>
 
+#if __cplusplus >= 201703L
 /**
  * @brief This function finds how many vertices have an odd degree in the given graph.
  * 

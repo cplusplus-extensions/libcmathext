@@ -36,6 +36,7 @@ MCD::~MCD() {
     delete[] vect;
 }
 
+#if __cplusplus >= 201703L
 /**
  * @brief Questa funzione implementa l'estensione dell'algoritmo di Euclide per il calcolo del Massimo Comun Divisore nel caso in cui si abbiano
  * due o più valori, acquisendo, in input, un vettore contenente tali valori. Utilizza la funzione gcd() (appartenente al namespace std, ma disponibile
@@ -53,6 +54,8 @@ unsigned long long int MCD::gcd() noexcept {
 
     return GCD;
 }
+
+#endif
 
 /**
  * @brief Questa funzione implementa l'estensione dell'Algoritmo di Euclide per calcolare il Massimo Comun Divisore tra due o più valori. Al contrario
