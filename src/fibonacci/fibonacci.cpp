@@ -53,7 +53,7 @@ int Fibonacci::binet(int index) {
     if(index > 0) {
         try {
             const double phi = (1 + sqrt(5))/2.0;
-            return (pow(phi, index) - pow(1 - phi, index))/sqrt(5);
+            return (pow(phi, index - 1) - pow(1 - phi, index - 1))/sqrt(5);
         } catch(std::overflow_error& e) {
             throw new std::overflow_error("Arithmetic overflow occurred.");
         }
