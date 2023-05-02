@@ -2,11 +2,8 @@
 #include <cmath>
 #include <algorithm>
 
-#if __cplusplus >= 201103L
-#include <numeric>
-#endif
-
 #if __cplusplus >= 201703L
+#include <numeric>
 /**
  * @brief Questa funzione permette di calcolare il numero di permutazioni con ripetizione di una sequenza di elementi (anche ripetuti).
  * 
@@ -35,6 +32,7 @@ unsigned long long int permWithRepetition(unsigned long long int n, const std::v
 }
 
 #else
+#include <numeric>
 #if __cplusplus >= 201103L //<numeric> was introduced in C++11, so we check the C++ version.
 /**
  * @brief Questa funzione permette di calcolare il numero di permutazioni con ripetizione di una sequenza di elementi (anche ripetuti).
