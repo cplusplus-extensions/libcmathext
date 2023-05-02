@@ -8,4 +8,4 @@ This library is suitable for all standard C++ versions, but some functions are i
 
 ## Website
 
-You can find this library's website's homepage at:  <https://marck283.github.io/libcmathext/>
+You can find this library's website's homepage at:  <https://cplusplus-extensions.github.io/libcmathext/>
