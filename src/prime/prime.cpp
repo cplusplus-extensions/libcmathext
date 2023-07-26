@@ -74,20 +74,11 @@ int PrimeNum::printPrime(int limit) {
  */
 bool PrimeNum::isPrime(int value) {
     //Base dell'induzione
-    if(value == 1) {
+    if(value == 1 || value%2 == 0 || value%3 == 0) {
         return false;
     }
-    if(value < 4) {
-        return true; //2 e 3 sono primi
-    }
-    if(value%2 == 0) {
-        return false;
-    }
-    if(value < 9) {
-        return true; //4, 6 ed 8 sono già stati esclusi
-    }
-    if(value%3 == 0) {
-        return false;
+    if(value < 4 || value < 9) {
+        return true; //2, 3, 5 e 7 sono primi, mentre 4, 6 ed 8 sono già stati esclusi
     }
 
     //Passo induttivo
@@ -133,20 +124,11 @@ unsigned long long int PrimeNum::printPrimeULL(unsigned long long int limit) {
  */
 bool PrimeNum::isPrimeULL(unsigned long long int value) {
     //Base dell'induzione
-    if(value == 1) {
+    if(value == 1 || value%2 == 0 || value%3 == 0) {
         return false;
     }
-    if(value < 4) {
-        return true; //2 e 3 sono primi
-    }
-    if(value%2 == 0) {
-        return false;
-    }
-    if(value < 9) {
-        return true; //4, 6 ed 8 sono già stati esclusi
-    }
-    if(value%3 == 0) {
-        return false;
+    if(value < 4 || value < 9) {
+        return true; //2, 3, 5 e 7 sono primi, mentre 4, 6 ed 8 sono già stati esclusi
     }
 
     //Passo induttivo
