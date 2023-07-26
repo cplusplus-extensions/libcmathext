@@ -117,30 +117,17 @@ unsigned long long int digitSum(std::string str) {
 }
 
 /**
- * @brief Questa funzione calcola il risultato della serie geometrica di ragione "reason" ed esponente "exp" se la serie
- * geometrica infinita da cui essa deriva è convergente.
+ * @brief Questa funzione calcola il risultato della progressione geometrica di ragione "reason" ed esponente "exp".
  * 
  * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
- * @exception std::invalid_argument Se la serie geometrica data dalla ragione fornita in input &egrave; irregolare o divergente.
- * @param reason La ragione della serie geometrica
- * @param exp L'esponente della serie geometrica
- * @return long double Il risultato del calcolo della serie geometrica
+ * @param reason La ragione della progressione geometrica
+ * @param exp L'esponente della progressione geometrica
+ * @return long double Il risultato del calcolo della progressione geometrica
  */
 long double geomProgression(unsigned long long int reason, unsigned long long int exp) {
     long double result = 0.0;
     try {
-        if(reason > -1 && reason < 1) {
-            //La serie geometrica converge
-            result = (1.0 - std::pow(reason, exp + 1))/(1.0 - reason);
-        } else {
-            if(reason <= -1) {
-                //La ragione è minore o uguale a -1, quindi la serie è irregolare
-                throw new std::invalid_argument("Any geometric series with the given reason is irregular.");
-            } else {
-                //La ragione è maggiore o uguale a 1, quindi la serie diverge positivamente
-                throw new std::invalid_argument("Any gometric series with the given reason is positively divergent.");
-            }
-        }
+        result = (1.0 - std::pow(reason, exp))/(1.0 - reason);
     } catch(std::overflow_error& e) {
         throw new std::overflow_error("Arithmetic overflow occurred.");
     }
