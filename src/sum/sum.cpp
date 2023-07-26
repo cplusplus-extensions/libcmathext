@@ -97,7 +97,7 @@ int Sum::sumDivisibleBy(int N, int target) {
  * @param str 
  * @return unsigned long long int 
  */
-unsigned long long int digitSum(std::string str) {
+unsigned long long int Sum::digitSum(std::string str) {
     std::string::iterator it;
 
     std::reverse(str.begin(), str.end());
@@ -126,7 +126,7 @@ unsigned long long int digitSum(std::string str) {
  * @param exp L'esponente della serie geometrica
  * @return long double Il risultato del calcolo della serie geometrica
  */
-long double geomProgression(unsigned long long int reason, unsigned long long int exp) {
+long double Sum::geomProgression(unsigned long long int reason, unsigned long long int exp) {
     long double result = 0.0;
     try {
         if(reason > -1 && reason < 1) {
