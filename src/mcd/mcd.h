@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <tuple>
 
 class MCD {
     private:
@@ -19,6 +20,7 @@ class MCD {
         unsigned long long int gcd();
         unsigned long long int mcd2();
         unsigned long long int mcd();
+        std::tuple<int, int, int> extendedGCD(int s, int m);
 };
 
 #endif

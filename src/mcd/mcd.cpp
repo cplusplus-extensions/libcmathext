@@ -96,3 +96,20 @@ unsigned long long int MCD::mcd() noexcept {
 
     return res;
 }
+
+/**
+ * @brief Questo metodo calcola i coefficienti dell'identità di Bezout della forma "s*x + m*y = mcd(s, m)".
+ * 
+ * @param s Il primo valore
+ * @param m Il secondo valore
+ * @return std::tuple<int, int, int> Il risultato finale contenente i valori dei coefficienti di Bezout 
+ */
+std::tuple<int, int, int> MCD::extendedGCD(int s, int m) {
+    if(m == 0) {
+        return std::make_tuple(s, 1, 0);
+    }
+
+    int d, p, r;
+    std::tie(d, p, r) = extendedGCD(m, s%m);
+    return std::make_tuple(d, p, r - (s/m)*p);
+}
