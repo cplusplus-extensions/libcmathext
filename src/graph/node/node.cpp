@@ -1,4 +1,5 @@
 #include "node.h"
+#include <algorithm>
 
 Node::Node(int val, std::vector<Node>* adj) {
     value = val;
@@ -22,4 +23,24 @@ void Node::setVisitato(bool val) {
 
 bool Node::getVisitato() {
     return visitato;
+}
+
+void Node::addAdjacent(Node n) {
+    adj->push_back(n);
+}
+
+void Node::removeAdjacent(Node n) {
+    std::vector<Node>::iterator it = std::find(adj->begin(), adj->end(), n);
+    if(it != adj->end()) {
+        adj->erase(it);
+        adj->shrink_to_fit();
+    }
+}
+
+void Node::setAdjacent(std::vector<Node>* adj) {
+    this->adj = adj;
+}
+
+bool Node::operator==(Node& n) {
+    return value == n.value && adj == n.adj;
 }

@@ -50,6 +50,24 @@ class Node {
      */
     bool evenVertex();
 
+    /**
+     * @brief This method sets a Node instance to be adjacent to the calling Node instance.
+     * 
+     * @param n The new Node instance
+     */
+    void addAdjacent(Node n);
+
+    /**
+     * @brief This method removes an adjacent Node instance. This is useful when removing a Node instance from a Graph instance.
+     * 
+     * @param n The Node instance to be removed
+     */
+    void removeAdjacent(Node n);
+
+    void setAdjacent(std::vector<Node>* adj);
+
+    bool operator==(Node& n);
+
     /* Add any other useful method */
 };
 

@@ -81,3 +81,52 @@ std::map<Node, int>* Graph::erdos(Node* start, std::map<Node, Node>* p) {
     delete queue;
     return map;
 }
+
+/**
+ * @brief This method adds a Node instance to the Graph and attaches it to the given Node instance.
+ * 
+ * @param p The given Node instance
+ * @param value The value from which to build the new Node instance
+ */
+void Graph::insertNode(Node* p, int value) {
+    Node* n = new Node(value, new std::vector<Node>());
+    vect->push_back(*n);
+    p->addAdjacent(*n);
+}
+
+/**
+ * @brief This method removes the given Node instance from the calling Graph instance.
+ * 
+ * @param n The given Node instance
+ * @return Node The removd Node instance
+ */
+Node Graph::removeNode(Node n) {
+    Node prev(0, nullptr);
+    for(Node s: *vect) {
+        std::vector<Node>::iterator it;
+        if(s == n) {
+            it = std::find(vect->begin(), vect->end(), s);
+            if(it != vect->end()) {
+                vect->erase(it);
+                vect->shrink_to_fit();
+            }
+        } else {
+            std::vector<Node>* ad = s.adjacent();
+            it = std::find(ad->begin(), ad->end(), s);
+            if(it != ad->end()) {
+                ad->erase(it);
+                ad->shrink_to_fit();
+                s.setAdjacent(ad);
+            }
+        }
+    }
+}
+
+/**
+ * @brief This method returns the size of the calling Graph instance, i.e. the number of Node instances it contains.
+ * 
+ * @return int The size of the calling Graph instance
+ */
+int Graph::size() {
+    return vect->size();
+}

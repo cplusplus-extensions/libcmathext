@@ -34,6 +34,9 @@ class Graph {
 		bool eulerianGraph();
 		bool eulerianPath();
 		std::map<Node, int>* erdos(Node* start, std::map<Node, Node>* p);
+		void insertNode(Node* p, int value);
+		Node removeNode(Node n);
+		int size();
 		
 		/* Add any other useful method */
 };
