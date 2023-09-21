@@ -19,6 +19,11 @@ class Graph {
 		    vect = new std::vector<Node>();
 		}
 		
+		/**
+		 * @brief Copy constructor.
+		 * 
+		 * @param g The old Graph instance from which to build the new one
+		 */
 		Graph(const Graph& g) {
 			vect = new std::vector<Node>(g.vect->size());
 			for(int i = 0; i < vect->size(); i++) {
