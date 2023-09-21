@@ -98,7 +98,7 @@ void Graph::insertNode(Node* p, int value) {
  * @brief This method removes the given Node instance from the calling Graph instance.
  * 
  * @param n The given Node instance
- * @return Node The removd Node instance
+ * @return Node The removed Node instance
  */
 Node Graph::removeNode(Node n) {
     Node prev(0, nullptr);
