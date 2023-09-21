@@ -33,6 +33,7 @@ class Graph {
 		int oddVertNum();
 		bool eulerianGraph();
 		bool eulerianPath();
+		std::map<Node, int>* erdos(Node* start, std::map<Node, Node>* p);
 		
 		/* Add any other useful method */
 };
