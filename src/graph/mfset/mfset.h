@@ -86,9 +86,8 @@ template <class T> class MFSET {
         MFSET(MFSET&& mfset) = delete;
 
         /**
-         * @brief This method finds the representative of the instance of the RMFSET class containing the given element and returns a pair 
-         * consisting of the so computed result and a pointer to the instance it represents (if such a result is found), otherwise it returns 
-         * nullptr.
+         * @brief This method finds the representative of the instance of the RMFSET class containing the given element and returns a 
+         * pointer to the instance it represents (if such a result is found), otherwise it returns nullptr.
          * 
          * @param elem The given element
          * @return RMFSET<T>* A pointer to the instance it represents (if such a result is found), otherwise nullptr.
