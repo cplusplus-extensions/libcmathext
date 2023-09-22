@@ -57,11 +57,11 @@ template <class T> class RMFSET {
         int size();
 
         /**
-         * @brief This method allows the concatenation of two instances of this class.
+         * @brief This method allows the merge of two instances of this class.
          * 
          * @param it1 
          */
-        void concat(RMFSET<T>* it1);
+        void merge(RMFSET<T>* it1);
 
         /**
          * @brief Destroy the RMFSET object

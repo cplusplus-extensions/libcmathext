@@ -40,7 +40,7 @@ template <class T> int RMFSET<T>::size() {
     return items->size();
 }
 
-template <class T> void RMFSET<T>::concat(RMFSET<T>* it1) {
+template <class T> void RMFSET<T>::merge(RMFSET<T>* it1) {
     items->merge(it1->items);
     it1->setRepr(repr);
 }
