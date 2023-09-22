@@ -49,17 +49,17 @@ template <class T> void MFSET<T>::merge(T first, T second) {
     RMFSET<T>* frepr = find(first), *srepr = find(second);
     if(frepr != nullptr && srepr != nullptr) {
         if(frepr != srepr) {
-            //Procedo al merge
+            //Proceeding with the merge
             if(frepr->size() < srepr->size()) {
-                //Concateno il primo al secondo
+                //Append the first one to the second one
                 srepr->concat(frepr);
             } else {
-                //Concateno il secondo al primo
+                //Viceversa, append the second one to the first one
                 frepr->concat(srepr);
             }
         }
     } else {
-        std::cerr << "Almeno un elemento non e' stato trovato." << std::endl;
+        throw new std::invalid_argument("At least one of the two elements was not found.");
     }
 }
 

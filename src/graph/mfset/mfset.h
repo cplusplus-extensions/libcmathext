@@ -29,7 +29,7 @@ template <class T> class RMFSET {
         /**
          * @brief This method allows the user to get the representative of this instance of the class.
          * 
-         * @return T The representative of htis instance of the class
+         * @return T The representative of this instance of the class
          */
         T getRepr();
 
