@@ -96,6 +96,8 @@ void Graph::insertNode(Node* p, int value) {
 
 /**
  * @brief This method removes the given Node instance from the calling Graph instance.
+ * @attention For performance reasons, this method does not restore the visited state of each Node instance in the calling Graph instance. 
+ * The user will have to do so manually.
  * 
  * @param n The given Node instance
  * @return Node The removed Node instance
@@ -129,4 +131,21 @@ Node Graph::removeNode(Node n) {
  */
 int Graph::size() {
     return vect->size();
+}
+
+/**
+ * @brief This method checks if the graph is acyclic or not. This is useful when trying to establish a topological order.
+ * @attention For performance reasons, this method does not restore the visited state of each Node instance in the calling Graph instance. 
+ * The user will have to do so manually.
+ * 
+ * @return true if the graph is acyclic
+ * @return false otherwise
+ */
+bool Graph::isAcyclic() {
+    for(Node s: *vect) {
+        if(!isAcyclicRec(s)) {
+            return false;
+        }
+    }
+    return true;
 }

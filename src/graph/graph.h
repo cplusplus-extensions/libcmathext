@@ -8,6 +8,16 @@
 class Graph {
 	private:
 		std::vector<Node>* vect;
+
+		bool isAcyclicRec(Node p) {
+			p.setVisitato(true);
+			for(Node s: *(p.adjacent())) {
+				if(s.getVisitato() || !isAcyclicRec(s)) {
+					return false;
+				}
+			}
+			return true;
+		}
 	
 	public:
 		/**
@@ -42,6 +52,8 @@ class Graph {
 		void insertNode(Node* p, int value);
 		Node removeNode(Node n);
 		int size();
+
+		bool isAcyclic();
 		
 		/* Add any other useful method */
 };
