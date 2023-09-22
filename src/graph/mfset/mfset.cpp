@@ -15,7 +15,7 @@ template <class T> RMFSET<T>::RMFSET(T repr) {
     items = new std::set<T>();
 }
 
-template <class T> T RMFSET<T>::getRepr() {
+template <class T> T RMFSET<T>::getRepr() const {
     return repr;
 }
 
@@ -23,11 +23,11 @@ template <class T> void RMFSET<T>::setRepr(T newrepr) {
     repr = newrepr;
 }
 
-template <class T> bool RMFSET<T>::contains(T elem) {
+template <class T> bool RMFSET<T>::contains(T elem) const {
     return std::find(items->begin(), items->end(), elem) != items->end();
 }
 
-template <class T> RMFSET<T>* MFSET<T>::find(T elem) {
+template <class T> RMFSET<T>* MFSET<T>::find(T elem) const {
     for(RMFSET<T>* item: *vset) {
         if(item->contains(elem)) {
             return item;
@@ -36,7 +36,7 @@ template <class T> RMFSET<T>* MFSET<T>::find(T elem) {
     return nullptr;
 }
 
-template <class T> int RMFSET<T>::size() {
+template <class T> int RMFSET<T>::size() const {
     return items->size();
 }
 

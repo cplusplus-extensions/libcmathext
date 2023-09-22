@@ -31,7 +31,7 @@ template <class T> class RMFSET {
          * 
          * @return T The representative of this instance of the class
          */
-        T getRepr();
+        T getRepr() const;
 
         /**
          * @brief This method sets the new representative for the calling instance of this class.
@@ -47,14 +47,14 @@ template <class T> class RMFSET {
          * @return true If the given element is contained in this instance of this class
          * @return false otherwise
          */
-        bool contains(T elem);
+        bool contains(T elem) const;
 
         /**
          * @brief This method returns the number of elements currently stored in this instance of the class.
          * 
          * @return int The number of elements currently stored in this instance of the class
          */
-        int size();
+        int size() const;
 
         /**
          * @brief This method allows the merge of two instances of this class.
@@ -92,7 +92,7 @@ template <class T> class MFSET {
          * @param elem The given element
          * @return RMFSET<T>* A pointer to the instance it represents (if such a result is found), otherwise nullptr.
          */
-        RMFSET<T>* find(T elem);
+        RMFSET<T>* find(T elem) const;
 
         /**
          * @brief This method merges the instances of the RMFSET class containing the two given elements (if they are different), otherwise 
