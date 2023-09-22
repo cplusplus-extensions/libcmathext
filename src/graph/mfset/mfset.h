@@ -6,7 +6,7 @@
 #include <set>
 
 /**
- * @brief This class is an implementation of the MFSET structure which can contain any type that can be ordered through a total order relation.
+ * @brief Utility class used to implements the components for the MFSET class.
  * 
  * @tparam T The type of data contained by this structure
  */
@@ -70,6 +70,21 @@ template <class T> class RMFSET {
         ~RMFSET();
 };
 
+/**
+ * @brief This class is an implementation of the MFSET structure which can contain any type that can be ordered through a total order relation. 
+ * Its mathematical complexity varies depending on the implementation of the underlying structure. For example, the complexity of this structure 
+ * is generally O(n) when the underlying set is implemented using lists, but it is proven that its value drops to O(log n) when the underlying 
+ * set is implemented using balanced trees without using the rank heuristic. It is also proven that its complexity drops even more to 
+ * O(n + m*alpha(n, m)), where alpha(n, m) is the inverse Ackermann function, when using the rank heuristic on balanced trees. 
+ * Given two elements in this structure, this heuristic:
+ * 1) finds the representative of the component containing each of the two elements;
+ * 2) if they are the same, nothing is done;
+ * 3) otherwise, this heuristic determines which is the tree with the shortest height between the two and appends its root to the other tree,
+ * making it a direct child of the other tree's root.
+ * Upon usage, this heuristic might cause the height of the tree to increase by 1.
+ * 
+ * @tparam T The type of data contained by this structure
+ */
 template <class T> class MFSET {
     private:
         std::vector<RMFSET<T>*>* vset;
