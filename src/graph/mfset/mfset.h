@@ -73,9 +73,10 @@ template <class T> class RMFSET {
 /**
  * @brief This class is an implementation of the MFSET structure which can contain any type that can be ordered through a total order relation. 
  * Its mathematical complexity varies depending on the implementation of the underlying structure. For example, the complexity of this structure 
- * is generally O(n) when the underlying set is implemented using lists, but it is proven that its value drops to O(log n) when the underlying 
- * set is implemented using balanced trees without using the rank heuristic. It is also proven that its complexity drops even more to 
- * O(n + m*alpha(n, m)), where alpha(n, m) is the inverse Ackermann function, when using the rank heuristic on balanced trees. 
+ * is generally O(n) when the underlying set is implemented using lists, but it is proven that its value is still O(n) when the underlying 
+ * set is implemented using balanced trees without using the rank heuristic. It is also proven that its complexity drops to:
+ * 1) O(log n) when using the rank heuristic (which is enough in most cases);
+ * 2) O(n + m*alpha(n, m)), where alpha(n, m) is the inverse Ackermann function, when using the path compression technique on balanced trees. 
  * Given two elements in this structure, this heuristic:
  * 1) finds the representative of the component containing each of the two elements;
  * 2) if they are the same, nothing is done;
@@ -108,6 +109,14 @@ template <class T> class MFSET {
          * @return RMFSET<T>* A pointer to the instance it represents (if such a result is found), otherwise nullptr.
          */
         RMFSET<T>* find(T elem) const;
+
+        /**
+         * @brief This method is a variant of find() which uses the path compression technique.
+         * 
+         * @param elem The given element
+         * @return RMFSET<T>* A pointer to the instance it represents (if such a result is found), otherwise nullptr.
+         */
+        RMFSET<T>* compressedFind(T elem);
 
         /**
          * @brief This method merges the instances of the RMFSET class containing the two given elements (if they are different), otherwise 

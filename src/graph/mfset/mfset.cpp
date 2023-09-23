@@ -36,6 +36,17 @@ template <class T> RMFSET<T>* MFSET<T>::find(T elem) const {
     return nullptr;
 }
 
+//Modificare la struttura he contiene questo metodo in una struttura esplicitamente organizzata ad albero
+template <class T> RMFSET<T>* MFSET<T>::compressedFind(T elem) {
+    for(RMFSET<T>* item: *vset) {
+
+        if(item->contains(elem)) {
+            return item;
+        }
+    }
+    return nullptr;
+}
+
 template <class T> int RMFSET<T>::size() const {
     return items->size();
 }
