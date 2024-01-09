@@ -12,8 +12,8 @@ class Fibonacci {
         this->index = index;
     }
     int sumEvenFib(int target);
-    int binet(int index);
-    ~Fibonacci();
+    double binet();
+    ~Fibonacci() = default;
 };
 
 #endif

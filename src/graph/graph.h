@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include "node/node.h"
+#include "node/node.cpp"
+#include <map>
 
 class Graph {
 	private:
@@ -11,11 +13,11 @@ class Graph {
 
 		bool isAcyclicRec(Node p) {
 			p.setVisitato(true);
-			for(Node s: *(p.adjacent())) {
-				if(s.getVisitato() || !isAcyclicRec(s)) {
-					return false;
-				}
-			}
+            std::all_of(p.adjacent()->begin(), p.adjacent()->end(), [this](Node s) -> bool {
+                if(s.getVisitato() || !isAcyclicRec(s)) {
+                    return false;
+                }
+            });
 			return true;
 		}
 	
@@ -51,7 +53,7 @@ class Graph {
 		std::map<Node, int>* erdos(Node* start, std::map<Node, Node>* p);
 		void insertNode(Node* p, int value);
 		Node removeNode(Node n);
-		int size();
+		unsigned long size();
 
 		bool isAcyclic();
 		

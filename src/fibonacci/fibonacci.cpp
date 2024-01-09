@@ -1,12 +1,12 @@
+#ifdef __GNUC__
+#if __GNUC__ < 13
 #define _USE_MATH_DEFINES
+#endif
+#endif
 
 #include "fibonacci.h"
 #include <cmath>
 #include <stdexcept>
-
-Fibonacci::~Fibonacci() {
-    //Distruttore vuoto
-}
 
 /**
  * @brief Questa funzione calcola la somma di tutti i numeri pari di Fibonacci che non superino il valore dato in input.
@@ -18,19 +18,15 @@ Fibonacci::~Fibonacci() {
  * @return int 
  */
 int Fibonacci::sumEvenFib(int target) {
-    unsigned long int sum = 1;
+    int sum = 1;
     if(target <= 0) {
-        throw new std::invalid_argument("Target value less than or equal to zero is not allowed.");
+        throw std::invalid_argument("Target value less than or equal to zero is not allowed.");
     } else {
-        unsigned long int nuovo = 1, old = 1;
-        try {
-            while(sum+nuovo<=target){
-                old=nuovo;
-                nuovo=sum;
-                sum=nuovo+old;
-            }
-        } catch(std::overflow_error& e) {
-            throw new std::overflow_error("Arithmetic overflow occurred.");
+        int nuovo = 1, old;
+        while(sum+nuovo<=target){
+            old=nuovo;
+            nuovo=sum;
+            sum=nuovo+old;
         }
     } 
 
@@ -45,19 +41,14 @@ int Fibonacci::sumEvenFib(int target) {
  * @exception std::overflow_error Eccezione lanciata quando si verifica un overflow aritmetico.
  * @exception std::invalid_argument Eccezione lanciata quando il valore fornito in input è negativo o nullo.
  * @remark Questa funzione è particolarmente consigliata nel caso della programmazione dinamica.
- * 
- * @param index
- * @return int 
+ *
+ * @return double L'i-esimo numero della serie di Fibonacci
  */
-int Fibonacci::binet(int index) {
+double Fibonacci::binet() {
     if(index > 0) {
-        try {
-            const double phi = (1 + sqrt(5))/2.0;
-            return (pow(phi, index) - pow(1 - phi, index))/sqrt(5);
-        } catch(std::overflow_error& e) {
-            throw new std::overflow_error("Arithmetic overflow occurred.");
-        }
+        const double phi = (1 + sqrt(5))/2.0;
+        return (pow(phi, index) - pow(1 - phi, index))/sqrt(5);
     } else {
-        throw new std::invalid_argument("Input value cannot be negative or zero.");
+        throw std::invalid_argument("Input value cannot be negative or zero.");
     }
 }

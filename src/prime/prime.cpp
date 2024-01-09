@@ -1,6 +1,6 @@
 #include "prime.h"
 
-PrimeNum::PrimeNum(int val = 0, unsigned long long int num = 0) {
+PrimeNum::PrimeNum(int val, unsigned long long int num) {
     this->val = val;
     this->num = num;
 }
@@ -11,15 +11,15 @@ PrimeNum::PrimeNum(int val = 0, unsigned long long int num = 0) {
  * @param n 
  * @return long long int
  */
-long long int PrimeNum::maxPrimeFactors(long long int n) { 
+long long int PrimeNum::maxPrimeFactors(long long int n) {
     //Initialize the maximum prime factor variable with the lowest one.
-    long long int maxPrime = -1; 
+    long long int maxPrime;
 
     if(n%2 == 0) {
         n /= 2;
         maxPrime = 2;
         while(n%2 == 0) {
-            n >> 1; //Equivalent to n /= 2
+            n /= 2;
         }
     } else {
         maxPrime = 1;
@@ -27,7 +27,8 @@ long long int PrimeNum::maxPrimeFactors(long long int n) {
     
     //n must be odd at this point, thus skip the even numbers and iterate only for odd integers.
 
-    int i = 3, maxFactor = sqrt(n);
+    int i = 3;
+    double maxFactor = sqrt((double)n);
     while(n > 1 && i <= maxFactor) {
         if(n%i == 0) {
             n /= i;
@@ -35,7 +36,7 @@ long long int PrimeNum::maxPrimeFactors(long long int n) {
             while(n%i == 0) {
                 n /= i;
             }
-            maxFactor = sqrt(n);
+            maxFactor = sqrt((double)n);
         }
         i += 2;
     }
@@ -77,7 +78,7 @@ bool PrimeNum::isPrime(int value) {
     if(value == 1 || value%2 == 0 || value%3 == 0) {
         return false;
     }
-    if(value < 4 || value < 9) {
+    if(value < 9) {
         return true; //2, 3, 5 e 7 sono primi, mentre 4, 6 ed 8 sono già stati esclusi
     }
 
@@ -127,12 +128,12 @@ bool PrimeNum::isPrimeULL(unsigned long long int value) {
     if(value == 1 || value%2 == 0 || value%3 == 0) {
         return false;
     }
-    if(value < 4 || value < 9) {
+    if(value < 9) {
         return true; //2, 3, 5 e 7 sono primi, mentre 4, 6 ed 8 sono già stati esclusi
     }
 
     //Passo induttivo
-    int r = floor(sqrt(value)), f = 5;
+    int r = floor(sqrt((double)value)), f = 5;
     while(f <= r) {
         if(value%f == 0) {
             return false; //Step out of the function

@@ -54,8 +54,8 @@ bool Graph::eulerianPath() {
  * @return std::map<int>* A pointer to a map of integers containing the Erdos number for each of the nodes in the graph
  */
 std::map<Node, int>* Graph::erdos(Node* start, std::map<Node, Node>* p) {
-    std::map<Node, int>* map = new std::map<Node, int>();
-    std::queue<Node>* queue = new std::queue<Node>();
+    auto* map = new std::map<Node, int>();
+    auto* queue = new std::queue<Node>();
     int count = 1, def = -1;
     map->insert(*(new std::pair<Node, int>(*start, 0)));
     queue->push(*start);
@@ -103,7 +103,7 @@ void Graph::insertNode(Node* p, int value) {
  * @return Node The removed Node instance
  */
 Node Graph::removeNode(Node n) {
-    Node prev(0, nullptr);
+    //Node prev(0, nullptr);
     for(Node s: *vect) {
         std::vector<Node>::iterator it;
         if(s == n) {
@@ -129,7 +129,7 @@ Node Graph::removeNode(Node n) {
  * 
  * @return int The size of the calling Graph instance
  */
-int Graph::size() {
+unsigned long Graph::size() {
     return vect->size();
 }
 
@@ -142,10 +142,10 @@ int Graph::size() {
  * @return false otherwise
  */
 bool Graph::isAcyclic() {
-    for(Node s: *vect) {
+    std::all_of(vect->begin(), vect->end(), [this](Node s) -> bool {
         if(!isAcyclicRec(s)) {
             return false;
         }
-    }
+    });
     return true;
 }

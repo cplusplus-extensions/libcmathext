@@ -2,7 +2,9 @@
 #include <numeric>
 #include <algorithm>
 
-MCD::MCD(std::vector<int>* vect = nullptr) {
+MCD::MCD(std::vector<int>* vect) {
+    a = 0;
+    b = 0;
     if(vect != nullptr) {
         this->vect = new std::vector<int>(vect->size());
         for(int i = 0; i < this->vect->size(); i++) {
@@ -13,7 +15,7 @@ MCD::MCD(std::vector<int>* vect = nullptr) {
     }
 }
 
-MCD::MCD(long long int a, long long int b) {
+MCD::MCD(unsigned long long int a, unsigned long long int b) {
     this->a = a;
     this->b = b;
     vect = nullptr;
@@ -81,7 +83,7 @@ unsigned long long int MCD::mcd2() noexcept {
  * @return int 
  */
 unsigned long long int MCD::mcd() noexcept {
-    int res = 0;
+    unsigned long long res = 0;
 
     if(b != 0) {
         while(a%b != 0) { //Attenzione alle divisioni per zero!

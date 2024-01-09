@@ -11,11 +11,13 @@ class Node {
         bool visitato; //Useful to visit a Graph
     
     public:
+    Node();
+
     /**
      * @brief Construct a new Node object
      * 
-     * @param val 
-     * @param adj 
+     * @param val The value of this Node instance
+     * @param adj
      */
     Node(int val, std::vector<Node>* adj);
 
@@ -39,7 +41,7 @@ class Node {
      * @return true if this Node has already been visited
      * @return false otherwise
      */
-    bool getVisitato();
+    bool getVisitato()const;
 
     /**
      * @brief This method verifies if a vertex has even valency (in other words, this method verifies if a vertex is connected
@@ -64,9 +66,11 @@ class Node {
      */
     void removeAdjacent(Node n);
 
-    void setAdjacent(std::vector<Node>* adj);
+    void setAdjacent(std::vector<Node>* adj1);
 
-    bool operator==(Node& n);
+    bool operator==(const Node& n)const;
+
+    bool operator<(const Node& n)const;
 
     /* Add any other useful method */
 };

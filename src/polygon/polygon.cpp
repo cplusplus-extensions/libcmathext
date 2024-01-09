@@ -1,5 +1,7 @@
 #include "polygon.h"
 
+#include <utility>
+
 /**
  * @brief Construct a new Polygon object
  * 
@@ -8,7 +10,7 @@
  * @param value1 
 */
 Polygon::Polygon(std::string polygon, int value, int value1) {
-    this->polygon = polygon;
+    this->polygon = std::move(polygon);
     this->value = value;
     this->value1 = value1;
 }
@@ -41,29 +43,27 @@ double Polygon::triangleArea(int base, int height) {
  * @param polygon Il poligono di cui calcolare l'area
  * @return double L'area del poligono specificato
  */
-double Polygon::polygonArea(Polygon polygon, int numLati) {
+double Polygon::polygonArea(const Polygon& polygon, int numLati) {
     if(numLati <= 0) {
-        throw new std::invalid_argument("The number of edges of a polygon cannot be less than or equal to zero.");
+        throw std::invalid_argument("The number of edges of a polygon cannot be less than or equal to zero.");
     }
-    if(polygon.polygon.compare("SQUARE") == 0 || polygon.polygon.compare("RECTANGLE") == 0 || polygon.polygon.compare("PARALLELOGRAM") == 0) {
+    if(polygon.polygon == "SQUARE" || polygon.polygon == "RECTANGLE" || polygon.polygon == "PARALLELOGRAM") {
         return polygon.value*polygon.value1;
     } else {
-        if(polygon.polygon.compare("RHOMBUS") == 0) {
+        if(polygon.polygon == "RHOMBUS") {
             return (double)(polygon.value*polygon.value1)/2.0; //Input values correspond to the two diagonals
         } else {
-            if(polygon.polygon.compare("TRIANGLE") == 0) {
+            if(polygon.polygon == "TRIANGLE") {
                 return triangleArea(polygon.value, polygon.value1);
             } else {
                 if(polygon.polygon.find("GON", polygon.polygon.length() - 3)) {
                     return numLati*triangleArea(polygon.value, polygon.value1);
                 } else {
-                    throw new std::invalid_argument("Not supported yet.");
+                    throw std::invalid_argument("Not supported yet.");
                 }
             }
         }
     }
-
-    return -1;
 }
 
 /**
@@ -87,11 +87,7 @@ double Polygon::circleArea(int radius) {
  */
 double Polygon::sphereVolume(int radius) {
     if(radius < 0) {
-        throw new std::invalid_argument("The given radius is invalid. Try giving a positive or null radius.");
+        throw std::invalid_argument("The given radius is invalid. Try giving a positive or null radius.");
     }
-    try {
-        return (4.0/3.0)*M_PI*radius*radius*radius;
-    } catch(std::overflow_error& e) {
-        throw new std::overflow_error("Overflow error occurred when trying to compute the result.");
-    }
+    return (4.0/3.0)*M_PI*radius*radius*radius;
 }

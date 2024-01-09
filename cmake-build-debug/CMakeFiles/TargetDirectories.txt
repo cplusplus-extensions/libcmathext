@@ -1,0 +1,3 @@
+/home/marco/CLionProjects/libcmathext/cmake-build-debug/CMakeFiles/libcmathext.dir
+/home/marco/CLionProjects/libcmathext/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/marco/CLionProjects/libcmathext/cmake-build-debug/CMakeFiles/rebuild_cache.dir

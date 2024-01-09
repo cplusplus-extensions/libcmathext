@@ -6,7 +6,7 @@
 #include <set>
 
 /**
- * @brief Utility class used to implements the components for the MFSET class.
+ * @brief Utility class used to implement the components for the MFSET class.
  * 
  * @tparam T The type of data contained by this structure
  */
@@ -21,7 +21,7 @@ template <class T> class RMFSET {
          * 
          * @param repr The element soon to be representative of this class's instance
          */
-        RMFSET(T repr);
+        explicit RMFSET(T repr);
 
         RMFSET(RMFSET& rmfset) = delete;
         RMFSET(RMFSET&& rmfset) = delete;
@@ -96,7 +96,7 @@ template <class T> class MFSET {
          * 
          * @param init The vector of objects to be used for initialization 
          */
-        MFSET(std::vector<T>* init);
+        explicit MFSET(std::vector<T>* init);
 
         MFSET(MFSET& mfset) = delete;
         MFSET(MFSET&& mfset) = delete;

@@ -1,6 +1,10 @@
 #ifndef PRIME_H
 #define PRIME_H
+#ifdef __GNUC__
+#if __GNUC__ < 13
 #define _USE_MATH_DEFINES
+#endif
+#endif
 
 #include <iostream>
 #include <cmath>

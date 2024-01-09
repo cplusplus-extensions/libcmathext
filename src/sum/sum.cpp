@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <cmath>
 
-Sum::Sum(int val, int val1 = 0, int val2 = 0) {
+Sum::Sum(int val, int val1, int val2) {
     valueA = val;
     valueB = val1;
     target = val2;
@@ -22,13 +22,9 @@ Sum::Sum(int val, int val1 = 0, int val2 = 0) {
  */
 int Sum::oddIntSum(int value) {
     if(value >= 0) {
-        try {
-            return value*value;
-        } catch(std::overflow_error& e) {
-            throw new std::overflow_error("Arithmetic overflow occurred.");
-        }
+        return value*value;
     } else {
-        throw new std::invalid_argument("Input value cannot be negative or zero.");
+        throw std::invalid_argument("Input value cannot be negative or zero.");
     }
 }
 
@@ -47,13 +43,9 @@ int Sum::oddIntSum(int value) {
  */
 int Sum::evenIntSum(int value) {
     if(value > 0) {
-        try {
-            return value*(value + 1);
-        } catch(std::overflow_error& e) {
-            throw new std::overflow_error("Arithmetic overflow occurred.");
-        }
+        return value*(value + 1);
     } else {
-        throw new std::invalid_argument("Input value cannot be negative or zero.");
+        throw std::invalid_argument("Input value cannot be negative or zero.");
     }
 }
 
@@ -63,17 +55,14 @@ int Sum::evenIntSum(int value) {
  * riportate nel codice del programma.
  * @warning Questa funzione lancia un'eccezione quando si verifica una condizione di overflow aritmetico.
  * @exception std::overflow_error Eccezione lanciata quando si verifica una condizione di overflow aritmetico.
- * 
- * @param valueA 
- * @param valueB 
- * @param target 
- * @return int 
+ *
+ * @return int La somma dei valori multipli (fino a target) di uno dei primi due parametri in input.
  */
-int Sum::sumMultiples(int valueA, int valueB, int target) {
+int Sum::sumMultiples() {
     try {
         return sumDivisibleBy(valueA, target) + sumDivisibleBy(valueB, target) - sumDivisibleBy(valueA*valueB, target);
     } catch(std::overflow_error& e) {
-        throw new std::overflow_error("Arithmetic overflow occurred.");
+        throw std::overflow_error("Arithmetic overflow occurred.");
     }
 }
 
@@ -83,7 +72,7 @@ int Sum::sumMultiples(int valueA, int valueB, int target) {
  * 
  * @param N 
  * @param target 
- * @return int 
+ * @return int La somma di tutti i valori pari positivi e multipli del valore dato in input.
  */
 int Sum::sumDivisibleBy(int N, int target) {
     int p = target/N;
@@ -91,8 +80,8 @@ int Sum::sumDivisibleBy(int N, int target) {
 }
 
 /**
- * @brief Questa funzione calcola la somma delle cifre di valori molto grandi (per questo motivo, in input non può essere inserito un dato di tipo int o sua variante,
- * ma deve essere inserito un dato di tipo "std::string").
+ * @brief Questa funzione calcola la somma delle cifre di valori molto grandi (per questo motivo, in input non può essere
+ * inserito un dato di tipo int o sua variante, ma deve essere inserito un dato di tipo "std::string").
  * 
  * @param str 
  * @return unsigned long long int 
@@ -126,23 +115,21 @@ unsigned long long int Sum::digitSum(std::string str) {
  * @param exp L'esponente della serie geometrica
  * @return long double Il risultato del calcolo della serie geometrica
  */
-long double Sum::geomProgression(unsigned long long int reason, unsigned long long int exp) {
-    long double result = 0.0;
+long double Sum::geomProgression(double reason, unsigned long long int exp) {
     try {
         if(reason > -1 && reason < 1) {
             //La serie geometrica converge
-            result = (1.0 - std::pow(reason, exp + 1))/(1.0 - reason);
+            return (1.0 - std::pow(reason, exp + 1))/(1.0 - reason);
         } else {
             if(reason <= -1) {
                 //La ragione è minore o uguale a -1, quindi la serie è irregolare
-                throw new std::invalid_argument("Any geometric series with the given reason is irregular.");
+                throw std::invalid_argument("Any geometric series with the given reason is irregular.");
             } else {
                 //La ragione è maggiore o uguale a 1, quindi la serie diverge positivamente
-                throw new std::invalid_argument("Any gometric series with the given reason is positively divergent.");
+                throw std::invalid_argument("Any gometric series with the given reason is positively divergent.");
             }
         }
     } catch(std::overflow_error& e) {
-        throw new std::overflow_error("Arithmetic overflow occurred.");
+        throw std::overflow_error("Arithmetic overflow occurred.");
     }
-    return result;
 }

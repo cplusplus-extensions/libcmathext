@@ -1,11 +1,10 @@
 #include "mfset.h"
 #include <algorithm>
-#include <utility>
 
 template <class T> MFSET<T>::MFSET(std::vector<T>* init) {
     vset = new std::vector<RMFSET<T>>();
     for(T item: *init) {
-        RMFSET<T>* newset = new RMFSET<T>(item);
+        auto* newset = new RMFSET<T>(item);
         vset->push_back(newset);
     }
 }
@@ -70,7 +69,7 @@ template <class T> void MFSET<T>::merge(T first, T second) {
             }
         }
     } else {
-        throw new std::invalid_argument("At least one of the two elements was not found.");
+        throw std::invalid_argument("At least one of the two elements was not found.");
     }
 }
 

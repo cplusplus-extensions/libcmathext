@@ -1,4 +1,8 @@
+#ifdef __GNUC__
+#if __GNUC__ < 13
 #define _USE_MATH_DEFINES
+#endif
+#endif
 
 #include "libcmathext.h"
 
@@ -17,7 +21,7 @@
  */
 unsigned long long int longestCollatz(unsigned long long int target) {
     unsigned long long int num = target/2, value;
-    std::pair<unsigned long long int, unsigned long long int>* paio = new std::pair<unsigned long long int, unsigned long long int>();
+    auto* paio = new std::pair<unsigned long long int, unsigned long long int>();
 
     paio->first = 0;
     paio->second = 0;
@@ -30,8 +34,12 @@ unsigned long long int longestCollatz(unsigned long long int target) {
         }
         num++;
     }
-    
-    return paio->first;
+
+    unsigned long long int res = paio->first;
+
+    delete paio;
+
+    return res;
 }
 
 /**
@@ -60,7 +68,7 @@ unsigned long long int countChain(unsigned long long int value) {
  * @param res Un parametro di ritorno che contiene il risultato del calcolo del fattoriale.
  * @return unsigned long long int Il risultato del calcolo del fattoriale
  */
-unsigned long long int factorial(unsigned long long int value, unsigned long long int res = 1) {
+unsigned long long int factorial(unsigned long long int value, unsigned long long int res) {
     if(value < 0 || res <= 0) {
         throw std::invalid_argument("At least one input value is negative.");
     } else {

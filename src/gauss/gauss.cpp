@@ -14,12 +14,8 @@
  */
 long long int Gauss::gaussSum(long long int value) {
     if(value > 0) {
-        try {
-            return value*(value + 1)/2;
-        } catch(std::overflow_error& e) {
-            throw new std::overflow_error("Arithmetic overflow occurred.");
-        }
+        return value*(value + 1)/2;
     } else {
-        throw new std::invalid_argument("Input value cannot be negative or zero.");
+        throw std::invalid_argument("Input value cannot be negative or zero.");
     }
 }

@@ -1,6 +1,10 @@
 #ifndef POLYGON_H
 #define POLYGON_H
+#ifdef __GNUC__
+#if __GNUC__ < 13
 #define _USE_MATH_DEFINES
+#endif
+#endif
 
 #include <iostream>
 #include <cmath>
@@ -19,7 +23,7 @@ class Polygon {
     public:
         explicit Polygon(std::string polygon, int value, int value1);
         double triangleArea(int base, int height);
-        double polygonArea(Polygon polygon, int numLati);
+        double polygonArea(const Polygon& polygon, int numLati);
         double circleArea(int radius);
         double sphereVolume(int radius);
 };

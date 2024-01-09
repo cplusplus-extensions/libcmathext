@@ -6,17 +6,17 @@
 
 class MCM {
     private:
-        int a, b;
-        std::vector<int>* vect;
+        unsigned long long int a, b;
+        std::vector<unsigned long long int>* vect;
     
-        void createVect(std::vector<int>* vect);
+        void createVect(std::vector<unsigned long long int>* vect1);
     
     public:    
-        explicit MCM(int a, int b);
-        explicit MCM(std::vector<int>* vect);
+        explicit MCM(unsigned long long int a, unsigned long long int b);
+        explicit MCM(std::vector<unsigned long long int>* vect);
         MCM(const MCM& mcm); //Costruttore di copia
-        int mcm();
-        int mcmVect();
+        unsigned long long int mcm() const;
+        void mcmVect();
 };
 
 #endif
