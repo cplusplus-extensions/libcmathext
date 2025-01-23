@@ -65,17 +65,19 @@ unsigned long long int countChain(unsigned long long int value) {
  * 
  * @exception std::invalid_argument Eccezione lanciata quando il almeno uno dei valori forniti in input è negativo.
  * @param value Il valore di cui calcolare il fattoriale.
- * @param res Un parametro di ritorno che contiene il risultato del calcolo del fattoriale.
  * @return unsigned long long int Il risultato del calcolo del fattoriale
+ * @throws std::invalid_argument Se il valore in input è troppo grande per poter ritornare il risultato
+ * corretto
  */
-unsigned long long int factorial(unsigned long long int value, unsigned long long int res) {
-    if(value < 0 || res <= 0) {
-        throw std::invalid_argument("At least one input value is negative.");
-    } else {
-        if(value == 0 || value == 1) {
-            return res;
-        } else {
-            return factorial(value - 1, res*value);
+unsigned long long int factorial(unsigned long long int value) {
+    unsigned long long int res = 1LL;
+    if (value != 0 && value != 1) {
+        for (unsigned long long int i = 1LL; i <= value; i++) {
+            if(res*i > ULONG_LONG_MAX) {
+                throw std::invalid_argument("value is too big.");
+            }
+            res *= i;
         }
     }
+    return res;
 }

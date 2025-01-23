@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.27)
 project(libcmathext)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/marve/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+include(C:\\Users\\marve\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake)
 
 include_directories(src/fibonacci)
 include_directories(src/gauss)
@@ -18,7 +21,6 @@ include_directories(src/sum)
 add_executable(libcmathext
         src/fibonacci/fibonacci.cpp
         src/fibonacci/fibonacci.h
-        src/fibonacci/test.cpp
         src/gauss/gauss.cpp
         src/gauss/gauss.h
         src/graph/mfset/mfset.cpp
@@ -39,3 +41,18 @@ add_executable(libcmathext
         src/prime/prime.h
         src/sum/sum.cpp
         src/sum/sum.h)
+
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        # Specify the commit you depend on and update it regularly.
+        URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+# Now simply link against gtest or gtest_main as needed. Eg
+add_executable(main tests/test.cpp)
+target_link_libraries(main gtest_main)
+add_test(NAME example_test COMMAND example)

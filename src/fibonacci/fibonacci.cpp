@@ -23,7 +23,7 @@ int Fibonacci::sumEvenFib(int target) {
         throw std::invalid_argument("Target value less than or equal to zero is not allowed.");
     } else {
         int nuovo = 1, old;
-        while(sum+nuovo<=target){
+        while(sum + nuovo <= INT_MAX && sum+nuovo<=target){
             old=nuovo;
             nuovo=sum;
             sum=nuovo+old;
